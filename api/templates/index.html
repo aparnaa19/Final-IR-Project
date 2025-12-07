@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IR Search Engine | Document Retrieval System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" stroke="url(#gradient)" stroke-width="3"/>
+                    <path d="M15 20L18 23L25 16" stroke="url(#gradient)" stroke-width="3" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0" y1="0" x2="40" y2="40">
+                            <stop offset="0%" stop-color="#667eea"/>
+                            <stop offset="100%" stop-color="#764ba2"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>IR Search Engine</h1>
+            </div>
+            <p class="subtitle">TF-IDF Based Document Retrieval System</p>
+        </header>
+
+        <!-- Search Section -->
+        <div class="search-card">
+            <form id="searchForm">
+                <div class="search-container">
+                    <div class="search-input-wrapper">
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM19 19l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <input 
+                            type="text" 
+                            id="queryInput" 
+                            placeholder="Enter your search query (e.g., information retrieval, database systems...)" 
+                            required
+                        />
+                    </div>
+                    
+                    <div class="controls">
+                        <div class="top-k-selector">
+                            <label for="topK">Results:</label>
+                            <select id="topK">
+                                <option value="3" selected>Top 3</option>
+                                <option value="5">Top 5</option>
+                                <option value="10">Top 10</option>
+                            </select>
+                        </div>
+                        <button type="submit" id="searchBtn" class="search-btn">
+                            <span class="btn-text">Search Documents</span>
+                            <span class="btn-loader"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="results-section" style="display: none;">
+            <div class="results-header">
+                <h2>Search Results</h2>
+                <div class="results-meta">
+                    <span id="queryDisplay"></span>
+                    <span id="resultCount"></span>
+                </div>
+            </div>
+            
+            <div id="resultsContainer" class="results-container"></div>
+        </div>
+
+        <!-- Error Section -->
+        <div id="errorSection" class="error-section" style="display: none;">
+            <div class="error-card">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <circle cx="24" cy="24" r="22" stroke="#ef4444" stroke-width="2"/>
+                    <path d="M24 14v14M24 32v2" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <h3>Oops! Something went wrong</h3>
+                <p id="errorMessage"></p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Built with Python, Flask, scikit-learn & TF-IDF | 
+                <span class="student-name">Aparnaa Mahalaxmi Arulljothi</span>
+            </p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
